@@ -4,14 +4,18 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 // Import search icon from already-include expo libraries:
 import { Feather } from '@expo/vector-icons';
 
-const SearchBar = ({ term, onTermChange }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   return <View style={styles.backgroundStyle}>
     <Feather name="search" style={styles.iconStyle} />
     <TextInput style={styles.inputStyle}
       placeholder="Search"
       value={term}
       onChangeText={newTerm => onTermChange(newTerm)}
+      autoCapitalize="none"
+      autoCorrect={false}
+      onEndEditing={() => onTermSubmit()}
     />
+
   </View>
 }
 
